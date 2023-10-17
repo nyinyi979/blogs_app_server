@@ -210,4 +210,4 @@ function UnPublish(id) {
     });
 }
 exports.UnPublish = UnPublish;
-//npx tsc server/prisma_methods/blogs/CPD.ts
+//npx tsc api/prisma_methods/blogs/CPD.ts

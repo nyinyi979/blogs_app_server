@@ -276,4 +276,4 @@ export async function removeComment(postID: string , cmtID: number){
         if(error) return "error";
     }
 }
-//npx tsc server/prisma_methods/blogs/update.ts
+//npx tsc api/prisma_methods/blogs/update.ts

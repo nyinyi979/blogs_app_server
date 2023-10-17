@@ -273,4 +273,4 @@ export async function blogsByDate(date: Date, blogsNumber: number, skip: number)
     }
 }
 
-//npx tsc server/prisma_methods/blogs/searchBlogs.ts
+//npx tsc api/prisma_methods/blogs/searchBlogs.ts

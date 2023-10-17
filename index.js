@@ -3,12 +3,12 @@ const app = express();
 
 const cors = require("cors");
 
-const { blogRouter } = require("./server/routes/blogs");
-const { imageRouter } = require("./server/routes/createImage");
-const { userRouter } = require("./server/routes/user");
-const { readUserbyEmail, deleteUser, readUserbyID } = require("./server/prisma_methods/users/CRUD");
+const { blogRouter } = require("./api/routes/blogs");
+const { imageRouter } = require("./api/routes/createImage");
+const { userRouter } = require("./api/routes/user");
+const { readUserbyEmail, deleteUser, readUserbyID } = require("./api/prisma_methods/users/CRUD");
 const { default: prisma } = require("./lib/prisma_object");
-const { blogsByCategory } = require("./server/prisma_methods/blogs/searchBlogs");
+const { blogsByCategory } = require("./api/prisma_methods/blogs/searchBlogs");
 
 app.use('/api',imageRouter);
 app.use(blogRouter);

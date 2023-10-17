@@ -108,4 +108,4 @@ export async function getBlog_P(id: any){
         return "error";
     }
 }
-//npx tsc server/prisma_methods/blogs/getBlog.ts
+//npx tsc api/prisma_methods/blogs/getBlog.ts

@@ -396,4 +396,4 @@ function blogsByDate(date, blogsNumber, skip) {
     });
 }
 exports.blogsByDate = blogsByDate;
-//npx tsc server/prisma_methods/blogs/searchBlogs.ts
+//npx tsc api/prisma_methods/blogs/searchBlogs.ts

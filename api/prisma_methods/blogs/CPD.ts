@@ -108,4 +108,4 @@ export async function UnPublish(id: string){
             if(error) return "error";
         }
 }
-//npx tsc server/prisma_methods/blogs/CPD.ts
+//npx tsc api/prisma_methods/blogs/CPD.ts

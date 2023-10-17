@@ -482,4 +482,4 @@ function deleteUser(id) {
     });
 }
 exports.deleteUser = deleteUser;
-//npx tsc server/prisma_methods/users/CRUD.ts
+//npx tsc api/prisma_methods/users/CRUD.ts

@@ -459,4 +459,4 @@ function removeComment(postID, cmtID) {
     });
 }
 exports.removeComment = removeComment;
-//npx tsc server/prisma_methods/blogs/update.ts
+//npx tsc api/prisma_methods/blogs/update.ts

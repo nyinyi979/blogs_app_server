@@ -7,4 +7,4 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 var Dropbox = require("dropbox");
 //GLOBAL DROPBOX OBJECT - ONLY FOR SERVER ( DOESN'T WANT TO INITIALIZE EVERYTIME )
 exports.dropbox = new Dropbox.Dropbox({ accessToken: process.env.NEXT_PUBLIC_DROPBOX_TOKEN });
-//npx tsc ./server/dropbox/dropbox.ts
+//npx tsc ./api/dropbox/dropbox.ts

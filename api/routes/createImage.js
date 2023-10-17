@@ -27,7 +27,7 @@ router.use(cors({origin:  ['https://blogs-app-alpha.vercel.app', 'http://localho
 
 //multer storage for saving the images
 const storage = multer.diskStorage({
-    destination: 'server/images',
+    destination: '/tmp',
     filename: function (req, file, cb) {
         let fileName = file.originalname.split('.')[0] + '-' + uuid.v4().split("-")[0] + '.png';
         cb(null, fileName);
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 })
 
 //multer config
-const upload = multer({ dest: '../images/' , limits: {fileSize: 2000000 } , storage: storage });
+const upload = multer({ dest: '/tmp' , limits: {fileSize: 2000000 } , storage: storage });
 
 //route to upload the image 
 router.post('/imageUpload' , upload.single('avatar') , async(req , res)=>{
@@ -43,13 +43,13 @@ router.post('/imageUpload' , upload.single('avatar') , async(req , res)=>{
     fileName = await req.body.name;
 
     //read the image and upload it to dropbox
-    fs.readFile(path.resolve(__dirname , '../images' , req.file.filename),async(err , contents)=>{
+    fs.readFile(path.resolve(__dirname , '/tmp' , req.file.filename),async(err , contents)=>{
         await dropbox.filesUpload({
             path: '/' + req.file.filename,
             contents
         }).then(async(result_)=>{ 
             //delete the image after uploading
-            fs.unlinkSync(path.resolve(__dirname , '../images' , req.file.filename));
+            fs.unlinkSync(path.resolve(__dirname , '/tmp' , req.file.filename));
             //image link added to database 
 
             let result = await addImage(req.body.id , result_.result.path_lower , req.body.location);

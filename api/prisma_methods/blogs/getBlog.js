@@ -176,4 +176,4 @@ function getBlog_P(id) {
     });
 }
 exports.getBlog_P = getBlog_P;
-//npx tsc server/prisma_methods/blogs/getBlog.ts
+//npx tsc api/prisma_methods/blogs/getBlog.ts

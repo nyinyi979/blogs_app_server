@@ -276,4 +276,4 @@ export async function deleteUser(id: string){
         return "error";
     }
 }
-//npx tsc server/prisma_methods/users/CRUD.ts
+//npx tsc api/prisma_methods/users/CRUD.ts
