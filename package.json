@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "prisma": {
-    "schema": "./server/prisma/schema.prisma"
+    "schema": "./api/prisma/schema.prisma"
   },
   "scripts": {
-    "start" : "node server/index" , 
+    "start" : "node ./index" , 
     "vercel-build" : "echo hello",
     "postinstall": "prisma generate"
   },
