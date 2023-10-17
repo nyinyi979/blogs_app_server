@@ -13,7 +13,7 @@ const { blogsByCategory } = require("./api/prisma_methods/blogs/searchBlogs");
 app.use('/api',imageRouter);
 app.use(blogRouter);
 app.use(userRouter)
-app.use(cors({origin: ['https://blogs-app-alpha.vercel.app','http://blogs-app-alpha.vercel.app', 'http://localhost:3001']}))
+app.use(cors({origin: ['https://blogs-app-alpha.vercel.app','http://blogs-app-alpha.vercel.app', 'http://localhost:3000']}))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 

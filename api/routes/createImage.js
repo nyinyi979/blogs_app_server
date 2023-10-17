@@ -22,7 +22,7 @@ require("dotenv").config({path:path.resolve(__dirname , '../../.env')})
 
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
-router.use(cors({origin:  ['https://blogs-app-alpha.vercel.app', 'http://localhost:3001']}))
+router.use(cors({origin:  ['https://blogs-app-alpha.vercel.app', 'http://localhost:3000']}))
 
 
 //multer storage for saving the images
