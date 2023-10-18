@@ -73,6 +73,14 @@ router.post('/removeCategoryFromUser' , async(req, res)=>{
 })
 
 
+const transporter = new nodemailer.createTransport({
+    service : "Gmail" , 
+    host : "smtp.gmail.com" , 
+    auth : {
+        user : "nyinyi095062687@gmail.com" , 
+        pass : "udofxapucvjykeaj"
+    }
+});
 //get verification code  
 async function sendMail(number,toEmail){
     const info = await transporter.sendMail({
@@ -106,14 +114,6 @@ router.post('/getCodeS' , async(req, res)=>{
     sendMail(randomNumber , mail);
     return res.json({code: randomNumber});
 })
-const transporter = new nodemailer.createTransport({
-    service : "Gmail" , 
-    host : "smtp.gmail.com" , 
-    auth : {
-        user : "nyinyi095062687@gmail.com" , 
-        pass : "udofxapucvjykeaj"
-    }
-});
 
 //check user 
 router.post('/checkExistingUser', async(req, res)=>{
