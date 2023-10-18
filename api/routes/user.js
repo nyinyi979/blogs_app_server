@@ -4,7 +4,7 @@ const router = express.Router();
 const prisma = require("../../lib/prisma_object")
 const cors = require('cors');
 const { readUserbyID, updateName, updateUsername, updatePhone, updateEmail, addCategoryToUser, removeCategoryFromUser, readUserbyEmail, createUser, readUserbyUsername } = require('../prisma_methods/users/CRUD');
-router.use(cors({origin:  ['https://blogs-app-alpha.vercel.app', 'http://blogs-app-alpha.vercel.app', 'http://localhost:3000']}));
+router.use(cors({origin:  ['https://blogs-app-one.vercel.app', 'http://blogs-app-one.vercel.app', 'http://localhost:3000']}));
 //for sending code for verfication
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');

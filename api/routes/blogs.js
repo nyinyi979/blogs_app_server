@@ -10,7 +10,7 @@ const { blogsByCategory, blogsByDate, blogsByAuthor, addDays, blogsByAuthorID, b
 const { getBlog_P } = require("../prisma_methods/blogs/getBlog")
 const { readUserbyID, readUserbyUsername } = require("../prisma_methods/users/CRUD");
 
-router.use(cors({origin: ['https://blogs-app-alpha.vercel.app', 'http://blogs-app-alpha.vercel.app', 'http://localhost:3000']}));
+router.use(cors({origin: ['https://blogs-app-one.vercel.app', 'http://blogs-app-one.vercel.app', 'http://localhost:3000']}));
 
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
