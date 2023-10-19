@@ -175,14 +175,14 @@ export async function removeCategory(id: string, category: string):Promise<strin
 }
 
 //Adding Like and REMOVING 
-export async function addLike(postID: string, username: string){
+export async function addLike(postID: string, id: string){
     try{
         let existing_user = await prisma.reaction.findFirst({
             where: {
                 postID: postID,
                 reactor: {
                     every:{
-                        username: username
+                        id : id
                     }
                 }
             },
@@ -201,7 +201,7 @@ export async function addLike(postID: string, username: string){
                 },
                 reactor:{
                     connect:{
-                        username: username
+                        id: id
                     }
                 }
             },
@@ -217,7 +217,7 @@ export async function addLike(postID: string, username: string){
 export async function removeLike(reactionID: number){
     try{
         await prisma.$connect();
-        await prisma.reaction.deleteMany({
+        await prisma.reaction.delete({
             where:{ 
                 id: reactionID
             }

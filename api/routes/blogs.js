@@ -5,7 +5,7 @@ const prisma = require("../../lib/prisma_object")
 const cors = require('cors')
 //METHODS
 const { deleteBlog, createBlog, Publish , UnPublish } = require('../prisma_methods/blogs/CPD');
-const { updateTitleAndContent, removeCategory, addCategory } = require("../prisma_methods/blogs/update");
+const { updateTitleAndContent, removeCategory, addCategory, addLike, removeLike } = require("../prisma_methods/blogs/update");
 const { blogsByCategory, blogsByDate, blogsByAuthor, addDays, blogsByAuthorID, blogsByCategories } = require("../prisma_methods/blogs/searchBlogs");
 const { getBlog_P } = require("../prisma_methods/blogs/getBlog")
 const { readUserbyID, readUserbyUsername } = require("../prisma_methods/users/CRUD");
@@ -110,7 +110,34 @@ router.get('/blog/:id' , async(req , res)=>{
     }
     return res.json(result);
 })
-
+router.get('/checkLike' , async(req, res)=>{
+    let id = jwt.verify(req.query.userID , process.env.NEXT_PUBLIC_JWT_SECRET);
+    let result = await prisma.default.reaction.findFirst({
+        where:{
+            postID: req.query.postID,
+            reactor:{
+                every:{
+                    id: id
+                }
+            }
+        }
+    })
+    if(result === null) return res.json('No');
+    else return res.json(result);
+})
+router.get('/addLike' , async(req, res)=>{
+    if(typeof req.query.userID === 'undefined') return res.json(new Error("Something went wrong"))
+    let id = jwt.verify(req.query.userID , process.env.NEXT_PUBLIC_JWT_SECRET);
+    let result = await addLike(req.query.postID , id);
+    if(result === 'error') return res.json(new Error("Server error"));
+    return res.json(result);
+})
+router.get('/removeLike' , async(req, res)=>{
+    console.log(req.query.id);
+    let result = await removeLike(Number(req.query.id));
+    if(result === 'error') return res.json(new Error("server error"));
+    return res.json("DONE");
+})
 //create a blog and save it to draft
 router.post('/createBlog' , async(req, res)=>{
     let authorID = jwt.verify(req.body.id , process.env.NEXT_PUBLIC_JWT_SECRET);

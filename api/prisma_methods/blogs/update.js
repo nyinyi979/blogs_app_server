@@ -293,7 +293,7 @@ function removeCategory(id, category) {
 }
 exports.removeCategory = removeCategory;
 //Adding Like and REMOVING 
-function addLike(postID, username) {
+function addLike(postID, id) {
     return __awaiter(this, void 0, void 0, function () {
         var existing_user, result, error_5;
         return __generator(this, function (_a) {
@@ -305,7 +305,7 @@ function addLike(postID, username) {
                                 postID: postID,
                                 reactor: {
                                     every: {
-                                        username: username
+                                        id: id
                                     }
                                 }
                             },
@@ -329,7 +329,7 @@ function addLike(postID, username) {
                                 },
                                 reactor: {
                                     connect: {
-                                        username: username
+                                        id: id
                                     }
                                 }
                             },
@@ -361,7 +361,7 @@ function removeLike(reactionID) {
                     return [4 /*yield*/, prisma_object_1.default.$connect()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, prisma_object_1.default.reaction.deleteMany({
+                    return [4 /*yield*/, prisma_object_1.default.reaction.delete({
                             where: {
                                 id: reactionID
                             }
