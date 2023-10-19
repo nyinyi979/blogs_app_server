@@ -78,7 +78,7 @@ const transporter = new nodemailer.createTransport({
     host : "smtp.gmail.com" , 
     auth : {
         user : "nyinyi095062687@gmail.com" , 
-        pass : "udofxapucvjykeaj"
+        pass : "mozm skcx mpsb ddpy"
     }
 });
 //get verification code  
