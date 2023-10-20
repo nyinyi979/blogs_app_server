@@ -1,6 +1,6 @@
 # blogs_app_server
-backend API for blogs app in my repositories
----
+Backend API for blogs app 
+
 ## Languages used 
 - Typescript ( Typescript is only used with prisma methods ) , JavaScript 
 
