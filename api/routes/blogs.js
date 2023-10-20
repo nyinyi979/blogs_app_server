@@ -34,7 +34,7 @@ router.get('/blogsByCategory' , async(req , res)=>{
 //for home page with array of categories 
 //this function is to get all posts counts for the given categories
 async function doStuffsBeforeGettingBlogs(id_ ){
-let user_values = {id: '' , categories: '' , post_counts: 0 , posts: []}; 
+let user_values = {id: '' , categories: '' , post_counts: 0 }; 
     let id = jwt.verify(id_ , process.env.NEXT_PUBLIC_JWT_SECRET);
     user_values.id = id;
     let { categories } = await readUserbyID(id);
@@ -55,8 +55,10 @@ let user_values = {id: '' , categories: '' , post_counts: 0 , posts: []};
 }
 router.get('/blogsByCategories' , async(req, res)=>{
     console.log(req.query.id)
-    let user_values = await doStuffsBeforeGettingBlogs(req.query.id , Number(req.query.t) , Number(req.query.s))
-    let result = await blogsByCategories(user_values.categories, Number(req.query.t) , Number(req.query.s));
+    let user_values = await doStuffsBeforeGettingBlogs(req.query.id);
+    let result;
+    if(req.query.t) result = await blogsByCategories(user_values.categories, Number(req.query.t) , Number(req.query.s));
+    else result = await blogsByCategories(user_values.categories , 11, 0);
     return res.json({count: user_values.post_counts , result: result})
 })
 //for searching blogs by timestamp

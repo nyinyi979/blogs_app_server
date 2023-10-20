@@ -99,7 +99,7 @@ router.post('/getCodeL' , async(req, res)=>{
     }
     let randomNumber = (Math.random() * (90000 - 10000 + 1) + 10000).toFixed(0);
     console.log(randomNumber);
-    sendMail(randomNumber , mail);
+    await sendMail(randomNumber , mail);
     return res.json({code: randomNumber});
 }) 
 router.post('/getCodeS' , async(req, res)=>{
@@ -111,7 +111,7 @@ router.post('/getCodeS' , async(req, res)=>{
     let randomNumber = (Math.random() * (90000 - 10000 + 1) + 10000).toFixed(0);
     console.log(randomNumber);
 
-    sendMail(randomNumber , mail);
+    await sendMail(randomNumber , mail);
     return res.json({code: randomNumber});
 })
 
