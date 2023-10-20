@@ -56,9 +56,12 @@ let user_values = {id: '' , categories: '' , post_counts: 0 };
 router.get('/blogsByCategories' , async(req, res)=>{
     console.log(req.query.id)
     let user_values = await doStuffsBeforeGettingBlogs(req.query.id);
-    let result;
-    if(req.query.t) result = await blogsByCategories(user_values.categories, Number(req.query.t) , Number(req.query.s));
-    else result = await blogsByCategories(user_values.categories , 11, 0);
+    if(Number(req.query.t) === 11){
+        if(user_values.categories.length < 5) user_values.categories[user_values.categories.length ] = {name: 'SAMPLE'};
+        let result = await blogsByCategories(user_values.categories, Number(req.query.t) , 0);
+        return res.json({count: user_values.post_counts , result: result})
+    }
+    let result = await blogsByCategories(user_values.categories, Number(req.query.t) , Number(req.query.s));
     return res.json({count: user_values.post_counts , result: result})
 })
 //for searching blogs by timestamp
