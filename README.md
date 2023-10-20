@@ -13,3 +13,4 @@ Backend API for blogs app
 In some of the routes, userID check is always done for security purposes. <br />
 Most of the routes are available in /api/routes folder. The routes are very self explanatory. <br /> 
 Detailed comments will be added to each route in next update :) 
+Hosted on - https://blogs-app-server-sable.vercel.app/
