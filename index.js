@@ -37,7 +37,9 @@ setInterval(()=>{
 }, 14400)
 // add custom path here 
 // server.post('/request/custom', custom);  
-
+app.get('/getToken', async(req, res)=>{
+    res.send(access_token);
+})
 app.get('/',async(req , res)=>{
     res.end("DONE");
 })
