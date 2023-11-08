@@ -33,7 +33,7 @@ router.get('/getToken', async(req, res)=>{
 })
 var Dropbox = require("dropbox");
 //GLOBAL DROPBOX OBJECT - ONLY FOR SERVER ( DOESN'T WANT TO INITIALIZE EVERYTIME )
-exports.dropbox = new Dropbox.Dropbox({ accessToken: access_token });
+exports.dropbox = new Dropbox.Dropbox({ accessToken: process.env.NEXT_PUBLIC_DROPBOX_TOKEN });
 //npx tsc ./api/dropbox/dropbox.ts
 
 exports.token = router
